@@ -1,0 +1,237 @@
+[
+  {
+    "question": "What are the first-line treatments for type 2 diabetes?",
+    "ground_truth": "First-line treatments for type 2 diabetes include lifestyle modifications such as diet and exercise, along with metformin as the primary pharmacological therapy.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "How does metformin work in treating type 2 diabetes?",
+    "ground_truth": "Metformin works by reducing hepatic glucose production, improving insulin sensitivity, and decreasing intestinal glucose absorption.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "What are the side effects of insulin therapy in diabetes?",
+    "ground_truth": "Common side effects of insulin therapy include hypoglycemia, weight gain, and injection site reactions.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "What is HbA1c and why is it important in diabetes management?",
+    "ground_truth": "HbA1c reflects average blood glucose levels over 2-3 months and is used to monitor long-term glycemic control in diabetes patients.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "What are GLP-1 receptor agonists and how do they help diabetes?",
+    "ground_truth": "GLP-1 receptor agonists stimulate insulin secretion, suppress glucagon, slow gastric emptying, and promote weight loss in type 2 diabetes patients.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "How do SGLT2 inhibitors work in diabetes treatment?",
+    "ground_truth": "SGLT2 inhibitors work by blocking glucose reabsorption in the kidneys, causing excess glucose to be excreted in urine, lowering blood sugar levels.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "What lifestyle changes are recommended for type 2 diabetes?",
+    "ground_truth": "Recommended lifestyle changes include weight loss, regular physical activity, dietary modifications reducing refined carbohydrates and saturated fats.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "What are the cardiovascular benefits of diabetes medications?",
+    "ground_truth": "SGLT2 inhibitors and GLP-1 receptor agonists have demonstrated cardiovascular benefits including reduced risk of major cardiac events in diabetic patients.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "How is type 2 diabetes diagnosed?",
+    "ground_truth": "Type 2 diabetes is diagnosed using fasting plasma glucose, HbA1c levels, or oral glucose tolerance tests based on established threshold values.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "What is insulin resistance and how does it relate to type 2 diabetes?",
+    "ground_truth": "Insulin resistance occurs when cells fail to respond normally to insulin, forcing the pancreas to produce more insulin and eventually leading to type 2 diabetes.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "What are the complications of poorly controlled type 2 diabetes?",
+    "ground_truth": "Poorly controlled diabetes leads to complications including nephropathy, retinopathy, neuropathy, and increased cardiovascular disease risk.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "How effective is bariatric surgery for type 2 diabetes?",
+    "ground_truth": "Bariatric surgery can lead to significant improvement or remission of type 2 diabetes, particularly in obese patients, through weight loss and hormonal changes.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "What is the role of diet in managing type 2 diabetes?",
+    "ground_truth": "Diet plays a central role in diabetes management, with low glycemic index foods, reduced caloric intake, and Mediterranean-style diets showing benefits.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "What are DPP-4 inhibitors used for in diabetes?",
+    "ground_truth": "DPP-4 inhibitors prevent breakdown of incretin hormones, increasing insulin secretion and reducing glucagon levels to improve blood sugar control.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "How does obesity contribute to type 2 diabetes?",
+    "ground_truth": "Obesity promotes insulin resistance through excess fatty acids, inflammation, and adipokine dysregulation, significantly increasing type 2 diabetes risk.",
+    "disease_area": "diabetes"
+  },
+  {
+    "question": "What are the first-line treatments for major depressive disorder?",
+    "ground_truth": "First-line treatments for major depressive disorder include SSRIs and SNRIs as pharmacotherapy, combined with psychotherapy such as cognitive behavioral therapy.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "How do SSRIs work for treating depression?",
+    "ground_truth": "SSRIs work by blocking serotonin reuptake in the synapse, increasing serotonin availability which improves mood, anxiety, and depressive symptoms.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "What is cognitive behavioral therapy and how does it treat depression?",
+    "ground_truth": "CBT is a structured psychotherapy that identifies and changes negative thought patterns and behaviors, with strong evidence for treating depression.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "What causes treatment-resistant depression?",
+    "ground_truth": "Treatment-resistant depression results from biological factors including genetic variations, neuroinflammation, HPA axis dysregulation, and inadequate treatment trials.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "What are the symptoms of major depressive disorder?",
+    "ground_truth": "Symptoms include persistent low mood, anhedonia, sleep disturbances, appetite changes, fatigue, concentration difficulties, and suicidal ideation.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "How effective is exercise for treating depression?",
+    "ground_truth": "Exercise has demonstrated moderate to large antidepressant effects, comparable to medication in mild to moderate depression, through neurobiological mechanisms.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "What is the role of serotonin in depression?",
+    "ground_truth": "Serotonin dysregulation contributes to depressive symptoms, though depression involves multiple neurotransmitter systems including norepinephrine and dopamine.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "What are SNRIs and how do they differ from SSRIs?",
+    "ground_truth": "SNRIs inhibit both serotonin and norepinephrine reuptake, potentially offering broader efficacy than SSRIs for depression and pain conditions.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "How long does antidepressant treatment typically last?",
+    "ground_truth": "Antidepressant treatment typically continues for 6-12 months after remission to prevent relapse, with longer treatment for recurrent depression.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "What is ketamine's role in treating depression?",
+    "ground_truth": "Ketamine acts on NMDA receptors producing rapid antidepressant effects within hours, approved for treatment-resistant depression as esketamine nasal spray.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "How does childhood trauma relate to depression risk?",
+    "ground_truth": "Childhood trauma increases depression risk through epigenetic changes, HPA axis dysregulation, and altered stress response systems persisting into adulthood.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "What is the prevalence of major depressive disorder globally?",
+    "ground_truth": "Major depressive disorder affects approximately 280 million people globally, making it one of the leading causes of disability worldwide.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "How does sleep disturbance relate to depression?",
+    "ground_truth": "Sleep disturbances are both a symptom and risk factor for depression, with insomnia increasing depression risk and poor sleep worsening depressive episodes.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "What are the side effects of antidepressant medications?",
+    "ground_truth": "Common antidepressant side effects include nausea, sexual dysfunction, weight gain, insomnia, and discontinuation syndrome upon stopping.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "What is electroconvulsive therapy used for in depression?",
+    "ground_truth": "ECT is used for severe, treatment-resistant depression producing rapid improvement through controlled electrical stimulation inducing therapeutic seizures.",
+    "disease_area": "depression"
+  },
+  {
+    "question": "How does exercise reduce cardiovascular disease risk?",
+    "ground_truth": "Exercise reduces cardiovascular risk through improved lipid profiles, lower blood pressure, reduced inflammation, and better insulin sensitivity.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "What role does cholesterol play in cardiovascular disease?",
+    "ground_truth": "LDL cholesterol contributes to atherosclerotic plaque formation in arteries, while HDL cholesterol helps remove cholesterol, affecting cardiovascular disease risk.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "What medications are used to prevent heart attacks?",
+    "ground_truth": "Medications for heart attack prevention include statins, aspirin, beta-blockers, ACE inhibitors, and antiplatelet agents depending on risk profile.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "How does hypertension damage the heart?",
+    "ground_truth": "Hypertension causes left ventricular hypertrophy, accelerates atherosclerosis, damages arterial walls, and increases risk of heart failure and stroke.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "What is atherosclerosis and how does it develop?",
+    "ground_truth": "Atherosclerosis is buildup of cholesterol plaques in arterial walls, developing through endothelial damage, lipid accumulation, and inflammatory processes.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "How do statins work to reduce cardiovascular risk?",
+    "ground_truth": "Statins inhibit HMG-CoA reductase reducing LDL cholesterol synthesis, stabilize plaques, and have anti-inflammatory effects reducing cardiovascular events.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "What is heart failure and how is it treated?",
+    "ground_truth": "Heart failure occurs when the heart cannot pump sufficient blood, treated with ACE inhibitors, beta-blockers, diuretics, and device therapy.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "What dietary changes reduce cardiovascular disease risk?",
+    "ground_truth": "Mediterranean diet, reduced saturated fat, increased omega-3 fatty acids, and lower sodium intake significantly reduce cardiovascular disease risk.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "How does smoking affect cardiovascular health?",
+    "ground_truth": "Smoking causes endothelial dysfunction, accelerates atherosclerosis, increases thrombosis risk, and doubles cardiovascular disease mortality risk.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "What is atrial fibrillation and what are its risks?",
+    "ground_truth": "Atrial fibrillation is irregular heart rhythm increasing stroke risk fivefold, managed with anticoagulation, rate control, and rhythm control strategies.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "How does diabetes increase cardiovascular disease risk?",
+    "ground_truth": "Diabetes accelerates atherosclerosis through hyperglycemia-induced oxidative stress, endothelial dysfunction, and dyslipidemia, doubling cardiovascular risk.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "What is the relationship between obesity and heart disease?",
+    "ground_truth": "Obesity increases cardiovascular risk through hypertension, dyslipidemia, insulin resistance, and direct cardiac effects including left ventricular dysfunction.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "How effective are blood pressure medications?",
+    "ground_truth": "Antihypertensive medications including ACE inhibitors, ARBs, calcium channel blockers, and diuretics effectively reduce blood pressure and cardiovascular events.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "What causes a heart attack?",
+    "ground_truth": "Heart attacks occur when coronary artery plaque ruptures forming a thrombus that blocks blood flow, causing myocardial ischemia and cell death.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "How does stress affect cardiovascular health?",
+    "ground_truth": "Chronic stress increases cortisol and catecholamines, raising blood pressure, promoting inflammation, and increasing cardiovascular disease risk.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "What is the role of inflammation in cardiovascular disease?",
+    "ground_truth": "Inflammation drives atherosclerotic plaque formation and destabilization, with CRP and other inflammatory markers predicting cardiovascular event risk.",
+    "disease_area": "cardiovascular"
+  },
+  {
+    "question": "How does sleep apnea affect heart health?",
+    "ground_truth": "Sleep apnea causes intermittent hypoxia and sleep disruption leading to hypertension, arrhythmias, and increased cardiovascular disease risk.",
+    "disease_area": "cardiovascular"
+  }
+]

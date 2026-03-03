@@ -1,0 +1,6 @@
+Question: {question}
+
+Research Papers:
+{context}
+
+Answer the question based strictly on the papers above.

@@ -1,0 +1,13 @@
+streamlit
+openai
+pinecone
+cohere
+python-dotenv
+nltk
+tiktoken
+ragas
+langsmith
+langchain
+langchain-openai
+datasets
+biopython

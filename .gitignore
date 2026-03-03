@@ -1,0 +1,7 @@
+.env
+venv/
+data/
+eval/answers_cache.json
+__pycache__/
+*.pyc
+.DS_Store
