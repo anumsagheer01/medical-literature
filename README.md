@@ -8,9 +8,7 @@
 ![RAG](https://img.shields.io/badge/RAG-PubMed-127B75?style=for-the-badge)
 ![Pinecone](https://img.shields.io/badge/Pinecone-Vector_Search-19647E?style=for-the-badge)
 ![RAGAS](https://img.shields.io/badge/RAGAS-Evaluation-8E44AD?style=for-the-badge)
-![Hugging%20Face](https://img.shields.io/badge/Hugging_Face-Live_Demo-F5A623?style=for-the-badge&logo=huggingface&logoColor=white)
 
-**[View the live demo](https://huggingface.co/spaces/anumsagheer/medical-literature)**
 
 </div>
 
@@ -26,7 +24,7 @@ Built a **medical literature RAG system** that retrieves PubMed research and gen
 | **Retrieval & Reranking** | Sentence-window chunking, Cohere Rerank v3 | Top-result score increased from **0.640 to 0.990** in a documented comparison |
 | **RAG Evaluation** | GPT-4o-mini, RAGAS, 47-question evaluation set | **0.906 faithfulness**, **0.749 answer relevancy**; context recall **0.495** |
 | **LLM Inference Benchmark** | Llama 3.1 8B, 4-bit quantization, T4 GPU | Average latency fell from **67.9s to 7.7s** in a separate benchmark |
-| **Application & Monitoring** | FastAPI, Streamlit, LangSmith, Hugging Face Spaces | Deployed demo with citations, confidence scores, and uncertainty flags |
+| **Application & Monitoring** | FastAPI, Streamlit, LangSmith | Application interface, API, and tracing for citations and evaluation |
 
 *Evaluation is based on a limited set of PubMed abstracts and test questions, not a clinical deployment. Reranker scores and RAGAS metrics measure different aspects of performance; the Llama benchmark is separate from the GPT-4o-mini answer pipeline.*
 
@@ -73,7 +71,7 @@ LangSmith Tracing - observability, cost, latency per query
         ↓
 FastAPI Backend + Streamlit UI
         ↓
-Deployed on HuggingFace Spaces
+Streamlit application interface
 ```
 
 ## How it works
@@ -135,7 +133,7 @@ In the documented query example, reranking surfaced papers about treatment goals
 | **4-bit quantized** | **7,678ms** | **7,963ms** | **8,232ms** |
 | **Improvement** | **+89%** | **+88%** | **+88%** |
 
-In this separate Llama 3.1 8B benchmark, 4-bit quantization reduced average inference latency by about 89%. This test does not measure the latency of the deployed GPT-4o-mini RAG pipeline.
+In this separate Llama 3.1 8B benchmark, 4-bit quantization reduced average inference latency by about 89%. This test does not measure the latency of the GPT-4o-mini RAG pipeline.
 
 ### LangSmith failure patterns identified
 
@@ -161,7 +159,6 @@ In all three cases the system flagged low confidence rather than hallucinating, 
 | Inference benchmark | HuggingFace Transformers + BitsAndBytes |
 | Backend | FastAPI |
 | Frontend | Streamlit |
-| Deployment | HuggingFace Spaces |
 | Language | Python 3.11 |
 
 
