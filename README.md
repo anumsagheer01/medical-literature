@@ -1,17 +1,41 @@
-## Medical Literature Search
-> A production RAG system that answers clinical questions from peer-reviewed research, with citations, confidence scores, and uncertainty flags.
+<div align="center">
 
-**Live Demo:** https://huggingface.co/spaces/anumsagheer/medical-literature
+# Medical Literature RAG
 
-> Currently covers three disease areas: **diabetes, depression, and cardiovascular disease.** More categories are actively being added.
+### Search medical research · Generate cited answers · Evaluate retrieval quality
 
-### What is this?
+![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![RAG](https://img.shields.io/badge/RAG-PubMed-127B75?style=for-the-badge)
+![Pinecone](https://img.shields.io/badge/Pinecone-Vector_Search-19647E?style=for-the-badge)
+![RAGAS](https://img.shields.io/badge/RAGAS-Evaluation-8E44AD?style=for-the-badge)
+![Hugging%20Face](https://img.shields.io/badge/Hugging_Face-Live_Demo-F5A623?style=for-the-badge&logo=huggingface&logoColor=white)
 
-Researchers and clinicians can't keep up with the 1 million+ new PubMed papers published every year. Keyword search returns 500 results nobody reads. This system lets you ask a plain English clinical question and get back a direct, cited answer drawn from real peer-reviewed research, along with a confidence score and explicit flags when the evidence is limited or uncertain.
+**[View the live demo](https://huggingface.co/spaces/anumsagheer/medical-literature)**
 
-This is not a chatbot that makes things up. Every claim in every answer traces back to a specific paper. If the corpus doesn't have enough evidence, the system says so, with 0% confidence and a clear explanation. 
+</div>
 
-### What it covers
+---
+
+## Project Overview & Key Results
+
+Built a **medical literature RAG system** that retrieves PubMed research and generates cited answers to clinical questions, with confidence scores and uncertainty flags. The current collection covers **diabetes, depression, and cardiovascular disease**.
+
+| Area | Approach & Technologies | Key Results |
+|---|---|---|
+| **Medical Literature Retrieval** | PubMed / NCBI Entrez, OpenAI embeddings, Pinecone | **3,775 abstracts** indexed across three disease areas |
+| **Retrieval & Reranking** | Sentence-window chunking, Cohere Rerank v3 | Top-result score increased from **0.640 to 0.990** in a documented comparison |
+| **RAG Evaluation** | GPT-4o-mini, RAGAS, 47-question evaluation set | **0.906 faithfulness**, **0.749 answer relevancy**; context recall **0.495** |
+| **LLM Inference Benchmark** | Llama 3.1 8B, 4-bit quantization, T4 GPU | Average latency fell from **67.9s to 7.7s** in a separate benchmark |
+| **Application & Monitoring** | FastAPI, Streamlit, LangSmith, Hugging Face Spaces | Deployed demo with citations, confidence scores, and uncertainty flags |
+
+*Evaluation is based on a limited set of PubMed abstracts and test questions, not a clinical deployment. Reranker scores and RAGAS metrics measure different aspects of performance; the Llama benchmark is separate from the GPT-4o-mini answer pipeline.*
+
+## The Problem
+
+Medical research can be difficult to search and synthesize. This project explores whether retrieval and reranking can help people find relevant PubMed evidence and get a clear answer with citations. When evidence is limited, the interface is designed to flag uncertainty rather than present an unsupported conclusion.
+
+## What it covers
+
 
 | Disease Area | Papers Indexed |
 |---|---|
@@ -23,7 +47,7 @@ This is not a chatbot that makes things up. Every claim in every answer traces b
 All papers sourced from PubMed via the NCBI Entrez API. Each paper stored with PMID, title, authors, journal, year, and disease area as metadata.
 
 
-### Architecture
+## Architecture
 ```
 PubMed API (NCBI Entrez)
         ↓
@@ -52,41 +76,41 @@ FastAPI Backend + Streamlit UI
 Deployed on HuggingFace Spaces
 ```
 
-### How it works
+## How it works
 
 **1. Data ingestion**
-The pipeline fetches PubMed abstracts using the NCBI Entrez API with disease-specific queries. Each paper is cleaned and stored with rich metadata that later becomes the citation shown to users.
+The pipeline fetches PubMed abstracts through the NCBI Entrez API using disease-specific queries. Each paper is cleaned and saved with metadata used to generate citations.
 
 **2. Chunking**
-Three strategies were benchmarked, fixed-size (512 tokens), semantic (sentence boundary), and sentence window (embed sentences, return surrounding context). Sentence window won with the highest average similarity score (0.610 vs 0.585 for fixed-size) and was selected as the production strategy.
+I compared fixed-size (512-token), semantic, and sentence-window chunking. Sentence-window chunking had the highest average similarity score (**0.610**, compared with **0.585** for fixed-size) and was selected for the RAG pipeline.
 
 **3. Indexing**
 Papers are embedded using OpenAI's text-embedding-3-small (1536 dimensions, cosine similarity) and stored in Pinecone with two namespaces — one for raw abstracts and one for sentence-window chunks. Metadata filtering by disease area, year, and journal is supported at query time.
 
 **4. Retrieval + reranking**
-User query is embedded and matched against the sentence_window namespace. Pinecone returns top 20 candidates by cosine similarity. Cohere's reranker then re-scores all 20 against the actual query intent, not just vector similarity, and returns the top 5. This two-stage approach dramatically improves result quality: raw Pinecone top score was 0.640, after Cohere reranking it jumped to 0.990 on the same query.
+A user query is embedded and matched against the `sentence_window` namespace. Pinecone returns top 20 candidates by cosine similarity. Cohere's reranker then re-scores all 20 against the actual query intent, not just vector similarity, and returns the top 5. For one documented query, the top-result score was **0.640** before reranking and **0.990** after Cohere reranking. These scores come from different scoring stages.
 
 **5. Prompt framework**
-Three prompt versions were built and tested. Version 3 (production) includes: explicit role definition, strict grounding rules, chain-of-thought reasoning (the model reasons step by step before answering), structured JSON output with answer/citations/confidence_score/uncertainty_flags, and medical domain guardrails that reject off-topic questions.
+Three prompt versions were built and tested. Version 3 uses an explicit role, grounding rules, structured JSON output (answer, citations, confidence score, and uncertainty flags), and guardrails for off-topic questions.
 
 **6. Evaluation**
-A 47-question clinical test set was built across all three disease areas with gold-standard answers. RAGAS runs four automatic metrics on every architecture change, faithfulness, answer relevancy, context precision, and context recall. All LLM calls are traced in LangSmith for latency, token usage, and failure pattern analysis.
+A 47-question clinical test set was built across all three disease areas with gold-standard answers. The evaluation reports four RAGAS metrics: faithfulness, answer relevancy, context precision, and context recall. LangSmith tracing supports analysis of latency, token use, and failure patterns.
 
 
-### Performance metrics
+## Results
 
 ### RAGAS Evaluation (47-question test set)
 
 | Metric | Score | What it means |
 |---|---|---|
-| Faithfulness | **0.906** | 90.6% of answer claims are grounded in retrieved papers, very low hallucination rate |
-| Answer Relevancy | **0.749** | Answers directly address the question asked 74.9% of the time |
-| Context Precision | **0.743** | Retrieved chunks are genuinely relevant to the query 74.3% of the time |
-| Context Recall | **0.495** | System captures about half the available evidence, limited by abstract-only indexing |
+| Faithfulness | **0.906** | RAGAS faithfulness score for grounding against retrieved context |
+| Answer Relevancy | **0.749** | RAGAS answer relevancy score |
+| Context Precision | **0.743** | RAGAS context precision score |
+| Context Recall | **0.495** | RAGAS context recall score on the test set |
 
-Context recall is the weakest metric and that is expected as this indexs abstracts only, not full paper text. The fix is indexing full PMC articles, which is a planned next step.
+Context recall was the lowest-scoring RAGAS metric. The index uses abstracts rather than full articles, which limits the evidence available for retrieval. Indexing full-text PMC articles is a planned next step.
 
-#### Chunking strategy benchmark
+### Chunking strategy benchmark
 
 | Strategy | Avg Similarity | Precision |
 |---|---|---|
@@ -94,16 +118,16 @@ Context recall is the weakest metric and that is expected as this indexs abstrac
 | Semantic (sentence boundary) | 0.587 | 1.00 |
 | **Sentence window (winner)** | **0.610** | **1.00** |
 
-#### Reranker impact
+### Reranker impact
 
 | Stage | Top result score |
 |---|---|
 | Raw Pinecone retrieval | 0.640 |
 | After Cohere reranking | 0.990 |
 
-The reranker completely changed which papers surfaced, generic diabetes papers were replaced by papers specifically about treatment goals and medication management.
+In the documented query example, reranking surfaced papers about treatment goals and medication management instead of more general diabetes papers. These scores are reranker outputs, not a direct measure of answer accuracy.
 
-#### Inference benchmark (Llama 3.1 8B on T4 GPU)
+### Separate inference benchmark (Llama 3.1 8B on T4 GPU)
 
 | Model | AVG | P50 | P90 |
 |---|---|---|---|
@@ -111,9 +135,9 @@ The reranker completely changed which papers surfaced, generic diabetes papers w
 | **4-bit quantized** | **7,678ms** | **7,963ms** | **8,232ms** |
 | **Improvement** | **+89%** | **+88%** | **+88%** |
 
-4-bit quantization reduced inference latency by 88% with negligible quality loss, demonstrating production viability of quantized models for real-time medical QA.
+In this separate Llama 3.1 8B benchmark, 4-bit quantization reduced average inference latency by about 89%. This test does not measure the latency of the deployed GPT-4o-mini RAG pipeline.
 
-#### LangSmith failure patterns identified
+### LangSmith failure patterns identified
 
 Three failure patterns were documented through tracing:
 1. **Recently approved drugs** - tirzepatide returned 0.5 confidence, correctly flagged insufficient evidence
@@ -122,7 +146,7 @@ Three failure patterns were documented through tracing:
 
 In all three cases the system flagged low confidence rather than hallucinating, which is the correct behavior for healthcare AI.
 
-### Tech stack
+## Tech stack
 
 | Layer | Technology |
 |---|---|
@@ -141,7 +165,7 @@ In all three cases the system flagged low confidence rather than hallucinating, 
 | Language | Python 3.11 |
 
 
-### Folder structure
+## Repository guide
 ```
 medical-literature/
 │
@@ -177,7 +201,7 @@ medical-literature/
     └── langsmith_trace.py          # LangSmith observability setup
 ```
 
-### How to run locally
+## Run it locally
 
 **1. Clone the repo**
 ```bash
@@ -208,7 +232,9 @@ NCBI_API_KEY=your_key
 NCBI_EMAIL=your@email.com
 ```
 
-**5. The data is already indexed in Pinecone** you don't need to re-run the ingestion scripts. Just run the app:
+**5. Run the app**
+
+If your Pinecone index is already configured and populated, you can start the application without rerunning ingestion:
 ```bash
 streamlit run app.py
 ```
@@ -216,10 +242,10 @@ streamlit run app.py
 Open **http://localhost:8501** in your browser.
 
 
-### What's next
+## What's next
 
 - Expand corpus to additional disease areas (oncology, neurology, infectious disease)
 - Index full-text PMC articles to improve context recall from 0.495
 - Add hybrid search combining dense vectors with BM25 keyword search
 - Query understanding layer to route different question types to different retrieval strategies
-- Evaluation-driven development run RAGAS on every new corpus addition
+- Run RAGAS evaluations whenever the corpus changes
